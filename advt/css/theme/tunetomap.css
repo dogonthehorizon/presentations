@@ -1,0 +1,178 @@
+/**
+ * Default theme for reveal.js.
+ *
+ * Copyright (C) 2011-2012 Hakim El Hattab, http://hakim.se
+ */
+/*********************************************
+ * GLOBAL STYLES
+ *********************************************/
+body {
+  background: #fff;
+  background-color: #fff; }
+
+.reveal {
+  font-family: "dapifer", sans-serif;
+  font-size: 36px;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  color: #000; }
+
+::selection {
+  color: black;
+  background: #99fdff;
+  text-shadow: none; }
+
+/*********************************************
+ * HEADERS
+ *********************************************/
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  margin: 0 0 20px 0;
+  color: #000;
+  font-family: "dapifer", sans-serif;
+  line-height: 0.9em;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  text-shadow: none;
+  font-weight: 100; }
+
+.reveal h1 {
+  text-shadow: none; }
+
+/*********************************************
+ * LINKS
+ *********************************************/
+.reveal a:not(.image) {
+  color: #3691ec;
+  text-decoration: none;
+  -webkit-transition: color .15s ease;
+  -moz-transition: color .15s ease;
+  -ms-transition: color .15s ease;
+  -o-transition: color .15s ease;
+  transition: color .15s ease; }
+
+.reveal a:not(.image):hover {
+  color: #93c4f5;
+  text-shadow: none;
+  border: none; }
+
+.reveal .roll span:after {
+  color: #000;
+  background: #126bc3; }
+
+/*********************************************
+ * IMAGES
+ *********************************************/
+.reveal section img {
+  margin: 15px 0px;
+  -webkit-transition: all .2s linear;
+  -moz-transition: all .2s linear;
+  -ms-transition: all .2s linear;
+  -o-transition: all .2s linear;
+  transition: all .2s linear; }
+
+.hundo-stuff {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.reveal a:hover img {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #3691ec;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.55); }
+
+/*********************************************
+ * NAVIGATION CONTROLS
+ *********************************************/
+.reveal .controls div.navigate-left,
+.reveal .controls div.navigate-left.enabled {
+  border-right-color: #3691ec; }
+
+.reveal .controls div.navigate-right,
+.reveal .controls div.navigate-right.enabled {
+  border-left-color: #3691ec; }
+
+.reveal .controls div.navigate-up,
+.reveal .controls div.navigate-up.enabled {
+  border-bottom-color: #3691ec; }
+
+.reveal .controls div.navigate-down,
+.reveal .controls div.navigate-down.enabled {
+  border-top-color: #3691ec; }
+
+.reveal .controls div.navigate-left.enabled:hover {
+  border-right-color: #93c4f5; }
+
+.reveal .controls div.navigate-right.enabled:hover {
+  border-left-color: #93c4f5; }
+
+.reveal .controls div.navigate-up.enabled:hover {
+  border-bottom-color: #93c4f5; }
+
+.reveal .controls div.navigate-down.enabled:hover {
+  border-top-color: #93c4f5; }
+
+/*********************************************
+ * PROGRESS BAR
+ *********************************************/
+.reveal .progress {
+  background: rgba(0, 0, 0, 0.2); }
+
+.reveal .progress span {
+  background: #3691ec;
+  -webkit-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  -moz-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  -ms-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  -o-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985); }
+
+.reveal p {
+  font-weight: 100;
+  text-align: center;
+  padding-top: 25px; }
+
+#title-slide {
+  list-style: none;
+  text-align: center;
+  margin: auto; }
+
+.reveal ul li {
+  line-height: 1.2em;
+  font-size: 44px;
+  font-weight: 100; }
+
+#focus-statement {
+  line-height: 1.2em; }
+
+.month {
+  font-size: 50px !important;
+  font-weight: 300 !important; }
+
+#advt-wrapper {
+    width: 100%;
+    margin: 0 auto;
+}
+
+#left-column {
+    float: left;
+    width: 49%;
+}
+
+#left-column h3 {
+    border-bottom: 2px solid black;
+    padding-bottom: 5px;
+}
+
+#right-column {
+    float: right;
+    width: 49%;
+}
+
+#right-column h3 {
+    border-bottom: 2px solid black;
+    padding-bottom: 5px;
+}

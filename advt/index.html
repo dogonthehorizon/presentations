@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>ADVT Presentation</title>
+		<meta name="author" content="Fernando Freire">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/tunetomap.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+
+        <!-- TypeScript Stuff -->
+        <script type="text/javascript" src="//use.typekit.net/wwv6qwj.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <script src="js/jquery-2.0.3.min.js"></script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h2><strong>Admissions Data</strong></h2>
+                    <h2><strong>Visualization Tool</strong></h2>
+                    <br />
+                    <h4>Aaron Dobbe</h4>
+                    <h4>Carl Lulay</h4>
+                    <h4>Fernando Freire</h4>
+                    <h4>Sam Golloway</h4>
+				</section>
+
+                <section>
+                    <h2><strong>Admissions at UP</strong></h2>
+                    <br />
+                    <h3 style='font-weight: 300'>What's wrong, and how can we fix it?</h3>
+                </section>
+
+                <section>
+                    <div id='advt-wrapper'>
+                        <div id='left-column'>
+                            <h3><strong>Problem</strong></h3>
+
+                            <ol>
+                                <li>Statistics are important but there is too much data.</li>
+                                <br />
+                                <li>No easy way to filter student data.</li>
+                                <br />
+                                <li>No clear way to see impact of visitation programs.</li>
+                            </ol>
+                        </div>
+                        <div id='right-column'>
+                            <h3><strong>Solution</strong></h3>
+
+                            <ol>
+                                <li>Search Admissions Data by Application Type.</li>
+                                <br />
+                                <li>Allow data to be filtered and exported.</li>
+                                <br />
+                                <li>Plot student enrollment with visitation data on a map.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h2><strong>Demonstration</strong></h2>
+                    <br />
+                    <h3 style='font-weight: 300'>Where we do things to make other things happen.</h3>
+                </section>
+
+                <section>
+                    <h2><strong>Implementing Sliders</strong></h2>
+                    <br />
+                    <h3 style='font-weight: 300'>For Fun and Profit!</h3>
+                </section>
+
+                <section>
+                    <h2>Implementing Sliders</h2>
+                    <br />
+                    <ul>
+                        <li><strong>Knockout.js</strong></li>
+                            <ul>
+                                <li class='fragment'>A JS library for MVVM patterns and templates.</li>
+                            </ul>
+                        <br />
+                        <li class='fragment'><strong>jQuery UI</strong></li>
+                            <ul>
+                                <li class='fragment'>A set of UI interactions by the jQuery team.</li>
+                            </ul>
+                    </ul>
+                </section>
+                <!-- ------------------- KNOCKOUTJS ------------------- -->
+                <section>
+                    <h2><strong>KnockoutJS</strong></h2>
+                    <br />
+                    <h3>A Brief <small>(brief)<small>(brief)<small>(brief)</small></small></small>Introduction</h3>
+                </section>
+                <section>
+                    <h2>Implementing Sliders</h2>
+                    <br />
+                    <ul>
+                        <li><strong>Knockout.js</strong></li>
+                        <ul>
+                            <li>A JS library for <strong style='color: red;'>MVVM</strong> patterns and templates.</li>
+                        </ul>
+                        <br />
+                        <li><strong>jQuery UI</strong></li>
+                        <ul>
+                            <li>A set of UI interactions by the jQuery team.</li>
+                        </ul>
+                    </ul>
+                </section>
+                <section>
+                    <h2><strong>MVVM?</strong></h2>
+                    <br />
+                    <ul>
+                        <li class='fragment'><strong>M:</strong> Model</li>
+                        <li class='fragment'><strong>V:</strong> View</li>
+                        <li class='fragment'><strong>VM:</strong> ViewModel</li>
+                    </ul>
+                </section>
+                <section>
+                    <img src='http://i.imgur.com/q11z4Ti.png' />
+                </section>
+                <section>
+                    <h3>How Does this all Work?</h3>
+                    <br />
+                    <h4>View (with a data-bind attribute)</h4>
+                    <pre><code data-trim contenteditable class='html' style="font-size: 18px; margin-top: 20px;">
+                    <input data-bind="value: name" placeholder="Name" />
+                    </code></pre>
+                    <br />
+                    <h4>ViewModel (matches the data-bind in the view)</h4>
+                    <pre><code data-trim contenteditable class='javascript' style="font-size: 18px; margin-top: 20px;">
+                        var sampleViewModel = {
+        name.koObservable("Alice")
+};
+                    </code></pre>
+                    <br />
+                    <h4>Bind the ViewModel to the View</h4>
+                    <pre><code data-trim contenteditable class='javascript' style="font-size: 18px; margin-top: 20px;">
+                        ko.applyBindings(sampleViewModel);
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h2><strong>jQuery UI</strong></h2>
+                    <br />
+                    <h4>This introduction hurts your brain less.<small>(maybe)</small></h4>
+                </section>
+                <section>
+                    <iframe id="frame" src="" width="100%" height="600">
+                    </iframe>
+                    <script>
+                        $('#frame').attr('src', 'http://jqueryui.com/slider/#range');
+                    </script>
+                </section>
+                <section>
+                    <h2><strong>Connecting the dots.</strong></h2>
+                </section>
+                <section>
+                    <h3>Initialize the View:</h3>
+                    <br />
+                    <pre><code data-trim contenteditable class='html' style="font-size: 18px; margin-top: 20px;">
+                        <div class='row'>
+    <label>SAT Reading</label>
+    <div class='large-4 columns'>
+        <input data-bind="value: satReading()[0]" />
+    </div>
+    <div class='large-4 columns'>
+        <div data-bind="slider: satReading,
+                        sliderOptions: {
+                            range: true,
+                            min:0, max:800,
+                            values: [0, 800],
+                            step: 1
+                        } "></div>
+    </div>
+    <div class='large-4 columns'>
+        <input data-bind="value: satReading()[1]" />
+    </div>
+</div>
+                    </code></pre>
+                </section>
+                <section>
+                    <h3>Initialize the ViewModel:</h3>
+                    <br />
+                    <pre><code data-trim contenteditable class='javascript' style="font-size: 16px; margin-top: 20px;">
+                        ko.bindingHandlers.slider = {
+
+    //Initialize the UI element.
+    init: function(element, valueAccessor, allBindingsAccessor) {
+...
+};
+// Return the ViewModel, which we will initialize in main.js
+return function() {
+    var self = this;
+
+    self.satReading = ko.observableArray([Constants.SAT_MIN, Constants.SAT_MAX]);
+    self.satMath    = ko.observableArray([Constants.SAT_MIN, Constants.SAT_MAX]);
+    self.GPA        = ko.observableArray([Constants.GPA_MIN, Constants.GPA_MAX]);
+
+};
+                    </code></pre>
+                </section>
+                <section>
+                    <h3>Apply the ViewModel:</h3>
+                    <br />
+                    <pre><code data-trim contenteditable class='javascript' style="font-size: 18px; margin-top: 20px;">
+                        //Instantiate a new slider view model.
+ko.applyBindings(new SliderViewModel());
+                    </code></pre>
+                </section>
+
+                <section>
+                    <a href='http://dogonthehorizon.github.io/cs441-advt' target='_blank'><h3>Click Me!</h3></a>
+                </section>
+
+                <section>
+                    <h2>Updated Architecture</h2>
+                    <img src='http://magiccards.info/scans/en/m12/190.jpg' />
+                </section>
+
+                <section>
+                    <h2>Application Overview</h2>
+                    <img src='http://i.imgur.com/R0Z6e8S.png' />
+                </section>
+                <section>
+                    <h3>Request/Response Architecture</h3>
+                    <br />
+                    <img src='http://i.imgur.com/5QhJrzy.png' class='hundo-stuff' />
+                </section>
+
+                <section>
+                    <h2><strong>Usability Results</strong></h2>
+                    <br />
+                    <blockquote class='fragment'>"I'm scared." - Anonymous Tester</blockquote>
+                </section>
+
+                <section>
+                    <h3>Usability Results: Round 1</h3>
+                    <br />
+                    <ul>
+                        <li>Likes</li>
+                            <ul>
+                                <li>It's pretty!</li>
+                                <li>Locating filters was a breeze!</li>
+                            </ul>
+                        <li>Not Likes</li>
+                            <ul>
+                                <li>Couldn't select both male and female</li>
+                                <li>City or State</li>
+                                <li>Couldn't tell if search was being done.</li>
+                            </ul>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Usability Results: Round 2</h3>
+                    <br />
+                    <ul>
+                        <li>Likes</li>
+                        <ul>
+                            <li>It's pretty!</li>
+                            <li>Locating filters was a breeze!</li>
+                        </ul>
+                        <li>Not Likes</li>
+                        <ul>
+                            <li>Map pop ups</li>
+                            <li>Popup for search</li>
+                            <li>Different types of results</li>
+                        </ul>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>If we were time travellers:</h3>
+                    <br />
+                    <ul>
+                        <li>Better project planning.</li>
+                        <li>More realistic goals.</li>
+                        <li>Develop for the customer, not the developer.</li>
+                        <li>Larger emphasis on testing.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Rampant Growth</h2>
+                    <img src='http://i.imgur.com/Zerw9W8.png' />
+                </section>
+
+                <section>
+                    <h2>Slides</h2>
+                    <p>dogonthehorizon.github.io/advt-presentation</p>
+                </section>
+		</div>
+    </div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: false,
+				history: true,
+				center: true,
+
+				theme: 'tunetomap',
+				transition: 'linear',
+                backgroundTransition: 'slide',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

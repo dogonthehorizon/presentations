@@ -1,0 +1,79 @@
+/**
+ * Default theme for reveal.js.
+ *
+ * Copyright (C) 2011-2012 Hakim El Hattab, http://hakim.se
+ */
+
+
+// Default mixins and settings -----------------
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+
+// Background of the presentation
+$backgroundColor: rgb(0, 73, 131);
+
+// Primary/body text
+$mainFont: 'museo-slab', sans-serif;
+$mainFontSize: 36px;
+$mainColor: #eee;
+
+// Headings
+$headingMargin: 0 0 20px 0;
+$headingFont: 'museo-slab', sans-serif;
+$headingColor: #eee;
+$headingLineHeight: 0.9em;
+$headingLetterSpacing: 0.02em;
+$headingTextTransform: none;
+$headingTextShadow: none;
+$heading1TextShadow: $headingTextShadow;
+
+// Links and actions
+$linkColor: #3691ec;
+$linkColorHover: lighten( $linkColor, 20% );
+
+// Text selection
+$selectionBackgroundColor: #99fdff;
+$selectionColor: #000000;
+
+// Generates the presentation background, can be overridden
+// to return a background image or gradient
+@mixin bodyBackground() {
+  background: $backgroundColor;
+}
+
+
+
+// Theme template ------------------------------
+@import "../template/tunetomap_theme";
+// ---------------------------------------------
+
+$avatar-size: 200px;
+
+.reveal p {
+    font-weight: 100;
+    text-align: center;
+
+    padding-top: 25px;
+}
+
+#title-slide {
+    list-style: none;
+    text-align: center;
+    margin: auto;
+}
+
+.reveal ul li {
+    line-height: 1.2em;
+    font-size: 44px;
+    font-weight: 100;
+}
+
+#focus-statement {
+    line-height: 1.2em;
+}
+
+.month {
+  font-size: 50px !important;
+  font-weight: 300 !important;
+}
