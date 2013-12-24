@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Janus DSL Presentation</title>
+
+		<meta name="description" content="A brief introduction to Team Stark and the TuneToMap project">
+		<meta name="author" content="Fernando Freire">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/tunetomap.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+
+        <!-- TypeScript Stuff -->
+        <script type="text/javascript" src="//use.typekit.net/rra8hlk.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+	</head>
+
+
+    <!-- data-background='rgb(85, 54, 121)' -->
+    <!-- data-background='rgb(215, 90, 12)' -->
+    <!-- data-background='rgb(35, 88, 0)' -->
+    <!-- data-background='rgb(170, 70, 48)' -->
+	<body>
+
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1>Janus DSL</h1>
+					<h3>Fernando Freire</h3>
+				</section>
+
+                <section>
+                    <h2>What is a DSL?</h2>
+                    <br />
+                    <h3 class='fragment'>Domain Specific Language</h3>
+                </section>
+
+                <section>
+                    <h2>Examples</h2>
+                    <br />
+                    <ul>
+                        <li class='fragment'>Mathematica</li>
+                        <li class='fragment'>MATLAB</li>
+                        <li class='fragment'>SQL</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>What is the domain for Janus?</h2>
+                    <br />
+                    <img src='http://i.imgur.com/MKNOOZE.png' />
+                    <ul>
+                        <li>UPBot Embedded Control and AI System</li>
+                            <ul>
+                                <li>Dr. Crenshaw & Mathew Holland</li>
+                            </ul>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>How do we implement DSLs?</h2>
+                    <ul>
+                        <li class='fragment'>FLEX</li>
+                            <ul>
+                                <li class='fragment'>A lexical analyser generator. </li>
+                            </ul>
+                        <li class='fragment'>BISON</li>
+                            <ul>
+                                <li class='fragment'>A general-purpose parser generator that converts an annotated CFG into a deterministic LR  parser.</li>
+                            </ul>
+                    </ul>
+                </section>
+
+                <section>
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+                        // This is a comment describing the following state
+begin state "stop"
+    nothing -> stop now : "stop"
+end state
+
+begin state "zero"
+    bump both -> turn random : "zero"
+    time 5    -> drive med   : "one"
+    otherwise -> drive low   : "zero"
+end state
+
+begin state "one"
+    bump both -> turn random : "zero"
+    otherwise -> drive med   : "one"
+end state
+                    </code></pre>
+                </section>
+
+                <section>
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+                        void initalizeWanderER(eventResponder* myER) {
+    myER->curState = 0;
+    myER->stateCount = 2;
+    myER->states = malloc(sizeof(state)*2);
+
+    myER->states[0].count = 4;
+    myER->states[0].clockTime = 5;
+    myER->states[0].transitions = malloc(sizeof(transition)*4);
+
+    myER->states[0].transitions[0].e = eventAlarm;
+    myER->states[0].transitions[0].r = respondDriveMed;
+    myER->states[0].transitions[0].n = 1;
+
+    myER->states[0].transitions[1].e = eventBump;
+    myER->states[0].transitions[1].r = respondTurn;
+    myER->states[0].transitions[1].n = 0;
+
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>How? 1. Tokenize Input</h2>
+                    <br />
+                        <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+                            "left"  |
+"right" |
+"both"          {
+    if (strcmp(yytext, "left") == 0) {
+        yylval.bump_mod = 0;
+    } else if (strcmp(yytext, "right") == 0) {
+        yylval.bump_mod = 1;
+    } else {
+        yylval.bump_mod = 2;
+    }
+
+    return BUMP_MOD;
+}
+                        </code></pre>
+                </section>
+
+                <section>
+                    <h2>How? 2. Parse Input</h2>
+                    <br />
+                        <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+                            event
+        : BUMP BUMP_MOD {
+                            switch($2) {
+                                case BUMP_LEFT:
+                                    $$ = "eventBumpLeft";
+                                    break;
+                                case BUMP_RIGHT:
+                                    $$ = "eventBumpRight";
+                                    break;
+                                case BUMP_BOTH:
+                                    $$ = "eventBump";
+                                    break;
+                            }
+                        }
+
+        | TIME INT_MOD  { $$ = "eventAlarm"; }
+
+        | NOOP          { $$ = "eventTrue"; }
+
+        | VWALL         { $$ = "eventVWall"; }
+        ;
+                        </code></pre>
+                </section>
+
+                <section>
+                    <h2>How? 3. Generate Output</h2>
+                    <br />
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+                            tmp_head = janus->states_head;
+int state_idx = 0;  // The number of states we have.
+while(tmp_head != NULL) {
+    printf("    jER->states[%d].count = %d;\n", state_idx, transition_size);
+    printf("    jER->states[%d].clockTime = 0;\n", state_idx);
+    printf("    jER->states[%d].transitions = malloc(sizeof(transition) * %d);\n", state_idx, transition_size);
+
+    printf("      jER->states[%d].transitions[%d].e = %s;\n", state_idx, state_idx, janus->states->state->event);
+    printf("      jER->states[%d].transitions[%d].r = %s;\n", state_idx, state_idx, janus->states->state->responder);
+    printf("      jER->states[%d].transitions[%d].n = %d;\n", state_idx, state_idx, janus->states->state->next_state);
+
+    tmp_head = tmp_head->next_state;
+    state_idx++;
+}
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h2>Future Plans</h2>
+                    <ul>
+                        <li>Better Error Reporting</li>
+                        <li>Stabilize Code Generation</li>
+                        <li>Expand Support for UPBot Features</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Slides</h2>
+                    <p>dogonthehorizon.github.io/janus-presentation</p>
+                </section>
+		</div>
+    </div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: false,
+				history: true,
+				center: true,
+
+				theme: 'tunetomap',
+				transition: 'linear',
+                backgroundTransition: 'slide',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
