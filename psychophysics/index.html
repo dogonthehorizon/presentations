@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>reveal.js - The HTML Presentation Framework</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/psychophysics.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+        <script type="text/javascript" src="//use.typekit.net/rdw6giz.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+
+        <style>
+            .psy-highlight {
+                color: #00bcd4;
+            }
+
+            .psy-headers {
+                text-align: left;
+                color: #00bcd4!important;
+            }
+        </style>
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+                <section>
+                    <h3 style="text-align: right;">Psychophysics<br />
+                        in less than <br />
+                        <span class="psy-highlight">30</span> minutes<br />
+                        <small>(or your money back)</small>
+                    </h3>
+
+                    <h4 style="text-align: right; font-weight: 300;">Fernando Freire | July 01, 2014</h4>
+                </section>
+
+                <section>
+                    <h2 style="text-align: right;">Background</h2>
+                </section>
+
+                <section>
+                    <h3 class="psy-headers">Sensation</h3>
+                    <p>The stimulation of sense organs</p>
+                    <br />
+                    <br />
+                    <h3 class="psy-headers">Perception</h3>
+                    <p>The selection, organization, and interpretation of sensory input</p>
+                </section>
+
+                <section>
+                    <h2 style="text-align: right;">Example</h2>
+                </section>
+
+                <section>
+                    <h3>How do we sense and perceive <span class="psy-highlight">sports</span>?</h3>
+                </section>
+
+                <section>
+                    <center><script src="http://player.espn.com/player.js?pcode=B4a3E63GKeEtO92XK7NI067ak980&width=800&height=600&externalId=intl:1927645"></script></center>
+                </section>
+
+                <section>
+                    <h3 class="psy-headers">Sensation</h3>
+                    <p>You <span class="psy-highlight">see</span> the ball going in the goal <br /> and you
+                       <span class="psy-highlight">hear</span> an increasing amount of noise</p>
+                </section>
+
+                <section>
+                    <h3 class="psy-headers">Perception</h3>
+                    <p>We process these inputs and understand that the U.S. scoring is a
+                        good thing <small>(You <i>were</i> rooting for the U.S., right?)</small></p>
+                </section>
+
+                <section>
+                    <h2 style="text-align: right;">Activity</h2>
+                </section>
+
+                <section>
+                    <h3>So what just happened?</h3>
+                </section>
+
+                <section>
+                    <img src="http://otorrinos2do.files.wordpress.com/2009/12/5a.jpg" />
+                </section>
+
+                <section>
+                    <h2 style="text-align: right;">Thanks!</h2>
+                </section>
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: false,
+				progress: false,
+				history: true,
+				center: true,
+                slideNumber: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: 'linear', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
